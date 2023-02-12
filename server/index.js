@@ -16,7 +16,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.SERVER_PORT || 8000;
 const db_link = process.env.DB_LINK;
-
+console.log(process.env.SERVER_PORT);
+console.log(process.env.CLIENT_URL);
 mongoose.set('strictQuery', true);
 
 mongoose.connect(db_link)

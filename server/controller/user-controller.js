@@ -114,7 +114,7 @@ export const userSignUp = async (req, res) => {
 export const verifyToken = async (req, res) => {
     console.log("server side verifyToken called");
     const loginCookie = req.cookies.login;
-    // console.log(loginCookie);
+    console.log(loginCookie);
     if(loginCookie){
         // jwt.verify(loginCookie.jwt_token, JWT_KEY, (err, user) => {
         jwt.verify(loginCookie.jwt_token, process.env.JWT_KEY, (err, user) => {
