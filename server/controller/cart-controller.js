@@ -6,7 +6,7 @@ export const addItem = async (req, res) => {
     try{
         const cartDoc = await cartModel.findOne({email: userEmail});
         let cart = cartDoc.cartItems;
-        // console.log(product);
+        console.log(product);
         let itemIndex = -1;
         //findIndex runs only if cart isn't empty
         if(cart.length){
@@ -31,7 +31,7 @@ export const addItem = async (req, res) => {
 export const removeItem = async (req, res) => {
     const {userEmail, data: productId} = req.body;
     console.log("server removeItem called");
-    // console.log(`${userEmail} ${productId}`);
+    console.log(`${userEmail} ${productId}`);
     try{
         const cartDoc = await cartModel.findOne({email: userEmail});
         let cart = cartDoc.cartItems;
@@ -54,7 +54,7 @@ export const removeItem = async (req, res) => {
 export const updateQuantity = async (req, res) => {
     const { userEmail, data: {id: productId, quantity} } = req.body;
     console.log("server updateQuantity called");
-    // console.log(`${userEmail} ${productId} ${quantity}`);
+    console.log(`${userEmail} ${productId} ${quantity}`);
     try{
         let cartDoc = await cartModel.findOne({email: userEmail});
         let cart = cartDoc.cartItems;
