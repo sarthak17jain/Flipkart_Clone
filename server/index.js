@@ -18,19 +18,6 @@ const PORT = process.env.SERVER_PORT || 8000;
 const db_link = process.env.DB_LINK;
 console.log(process.env.SERVER_PORT);
 console.log(process.env.CLIENT_URL);
-mongoose.set('strictQuery', true);
-
-mongoose.connect(db_link)
-.then(function(db){
-    // console.log(db);
-    console.log('db connected');
-})
-.catch(function(err){
-    console.log(err);
-});
-
-app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
-DefaultData();
 
 //rawBody in form of buffer data is required for Stripe 
 //req.body -> parsed JSON
@@ -47,6 +34,19 @@ app.use(cors({credentials: true, origin: process.env.CLIENT_URL}));
 //we use middleware function for cookieParser so that we can access our cookies from anywhere
 app.use(cookieParser());
 
+mongoose.set('strictQuery', true);
+
+mongoose.connect(db_link)
+.then(function(db){
+    // console.log(db);
+    console.log('db connected');
+})
+.catch(function(err){
+    console.log(err);
+});
+
+app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
+DefaultData();
 
 app.use('/product', productRouter);
 app.use('/auth', authRouter);

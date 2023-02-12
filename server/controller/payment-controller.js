@@ -6,6 +6,7 @@ import cartModel from '../model/cartSchema.js';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const checkout = async function (req, res){
+    console.log("server side checkout called");
     try {
         const {email, items, isCartPayment} = req.body;
         // console.log(items);
@@ -63,6 +64,7 @@ export const checkout = async function (req, res){
 };
 
 export const clearCart = async function (req, res){
+    console.log("server side clearcart called");
     const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
     let event = req.body;

@@ -15,10 +15,11 @@ const cookieOptions = {
 }
 
 export const userLogIn = async (req, res) => {
+    console.log("server side userLogIn called");
     let data = req.body;
     try {
         let user = await User.findOne({ email: data.email });
-        // console.log(req.body.password+" "+req.body.email);
+        console.log(req.body.password+" "+req.body.email);
         // console.log(user);
         if(user) {
             bcrypt.compare(data.password, user.password, function(err, result) {
@@ -66,6 +67,7 @@ export const userLogIn = async (req, res) => {
 }
 
 export const userSignUp = async (req, res) => {
+    console.log("server side userSignup called");
     try {
         const dataObj = req.body;
         const exists = await User.findOne({ $or:[ { username: dataObj.username }, { email: dataObj.email } ]});

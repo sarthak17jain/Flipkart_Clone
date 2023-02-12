@@ -76,6 +76,7 @@ export const updateQuantity = async (req, res) => {
 }
 
 export const getCart = async (req, res) => {
+    console.log("server getCart called");
     const {userEmail} = req.body;
     try{
         const cartDoc = await cartModel.findOne({email: userEmail});
