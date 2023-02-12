@@ -18,7 +18,13 @@ const PORT = process.env.SERVER_PORT || 8000;
 const db_link = process.env.DB_LINK;
 console.log(process.env.SERVER_PORT);
 console.log(process.env.CLIENT_URL);
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'client/build' ));
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
+    });
+}
 //rawBody in form of buffer data is required for Stripe 
 //req.body -> parsed JSON
 //req.rawData -> req in form on buffer
