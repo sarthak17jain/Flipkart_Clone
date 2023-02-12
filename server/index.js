@@ -24,11 +24,13 @@ mongoose.connect(db_link)
 .then(function(db){
     // console.log(db);
     console.log('db connected');
+    afterConnection();
 })
 .catch(function(err){
     console.log(err);
 });
-
+//for serverless deployment
+function afterConnection(){
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 DefaultData();
 
@@ -52,7 +54,7 @@ app.use('/product', productRouter);
 app.use('/auth', authRouter);
 app.use('/payment', paymentRouter);
 app.use('/cart', cartRouter);
-
+}
 //PAYTM:
 // export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
 // //callback url is called after success or failure of payment
