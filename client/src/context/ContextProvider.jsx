@@ -33,6 +33,7 @@ const ContextProvider = ({children}) => {
         const checkUser = async ()=>{
             try{
                 const res = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/checkuser`, {withCredentials: true});
+                console.log(res);
                 const accountDetails = res.data.account;
                 setAccount(accountDetails);
                 setCartData(accountDetails.email);

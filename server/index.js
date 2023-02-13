@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import { v4 as uuid } from 'uuid';
 
 import DefaultData from './default.js';
@@ -18,13 +19,7 @@ const PORT = process.env.SERVER_PORT || 8000;
 const db_link = process.env.DB_LINK;
 console.log(process.env.SERVER_PORT);
 console.log(process.env.CLIENT_URL);
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static( 'client/build' ));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
-    });
-}
 //rawBody in form of buffer data is required for Stripe 
 //req.body -> parsed JSON
 //req.rawData -> req in form on buffer
@@ -59,6 +54,13 @@ app.use('/auth', authRouter);
 app.use('/payment', paymentRouter);
 app.use('/cart', cartRouter);
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'client/build' ));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
+    });
+}
 //PAYTM:
 // export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
 // //callback url is called after success or failure of payment

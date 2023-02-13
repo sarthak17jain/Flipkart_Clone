@@ -155,7 +155,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const loginUser = async() => {
         let response = await authenticateLogin(login);
-        // console.log(response);
+        console.log(response);
         if(!response){ 
             showError(true);
         }else {
@@ -168,6 +168,7 @@ const LoginDialog = ({ open, setOpen, setAccount }) => {
 
     const signupUser = async() => {
         let response = await authenticateSignup(signup);
+        console.log(response);
         if(!response) return;
         handleClose();
         setAccount(response.data.account);
