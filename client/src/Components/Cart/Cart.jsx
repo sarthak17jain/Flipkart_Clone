@@ -89,6 +89,16 @@ const Cart = () => {
         }else{
             try{
                 // makePayment(totalPrice, account.email);
+                toast.info('Redirecting to Stripe Checkout Page!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 makePayment(account.email, cartItems, true);
             }catch(err){
                 console.log("payment failed");
@@ -100,6 +110,16 @@ const Cart = () => {
         if(paymentPending && !!account){
             try{
                 // makePayment(totalPrice, account.email);
+                toast.info('Redirecting to Stripe Checkout Page!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 makePayment(account.email, cartItems, true);
             }catch(err){
                 console.log("payment failed");

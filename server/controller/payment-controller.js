@@ -72,8 +72,6 @@ const clearCart = async function (req, res){
     if (endpointSecret) {
       // Get the signature sent by Stripe
       const signature = req.headers['stripe-signature'];
-      console.log(signature);
-      console.log(req.rawBody);
       try {
         event = stripe.webhooks.constructEvent(
           req.rawBody,
