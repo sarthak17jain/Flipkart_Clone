@@ -1,7 +1,7 @@
-import Product from '../model/productSchema.js';
+const Product = require('../model/productSchema.js');
 
 
-export const getProducts = async (request, response) => {
+const getProducts = async (request, response) => {
     try {
         console.log("getproductscalled");
         const products = await Product.find({});
@@ -12,7 +12,7 @@ export const getProducts = async (request, response) => {
     }
 }
 
-export const getProductById = async (request, response) => {
+const getProductById = async (request, response) => {
     try {
         console.log('Hie '+request.params.id);
         const product = await Product.findOne({ 'id': request.params.id });
@@ -22,3 +22,5 @@ export const getProductById = async (request, response) => {
         console.log("getProductById error: "+error);
     }
 }
+
+module.exports = {getProducts, getProductById};

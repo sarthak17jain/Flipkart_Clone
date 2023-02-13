@@ -1,11 +1,10 @@
-import Stripe from "stripe";
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // import bodyparser from 'body-parser';
-import dotenv from 'dotenv';
-dotenv.config();
-import cartModel from '../model/cartSchema.js';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const dotenv = require('dotenv').config();
+// dotenv.config();
+const cartModel  = require('../model/cartSchema.js');
 
-export const checkout = async function (req, res){
+const checkout = async function (req, res){
     console.log("server side checkout called");
     try {
         const {email, items, isCartPayment} = req.body;
@@ -63,7 +62,7 @@ export const checkout = async function (req, res){
     }
 };
 
-export const clearCart = async function (req, res){
+const clearCart = async function (req, res){
     console.log("server side clearcart called");
     const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
@@ -133,6 +132,7 @@ export const clearCart = async function (req, res){
     res.send();
 }
 
+module.exports = {checkout, clearCart};
 
 //PAYTM:
 // import paytmchecksum from '../paytm/PaytmChecksum.js';

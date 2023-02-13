@@ -1,19 +1,19 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const dotenv = require('dotenv').config();
+const path = require('path');
 // import path from 'path';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
-import DefaultData from './default.js';
-import productRouter from './routes/productRouter.js';
-import cartRouter from './routes/cartRouter.js';
-import authRouter from './routes/authRouter.js';
-import paymentRouter from './routes/paymentRouter.js';
+const DefaultData = require('./default.js');
+const productRouter = require('./routes/productRouter.js');
+const cartRouter = require('./routes/cartRouter.js');
+const authRouter = require('./routes/authRouter.js');
+const paymentRouter = require('./routes/paymentRouter.js');
 
-dotenv.config();
 const app = express();
 console.log()
 const PORT = process.env.PORT || 8000;
@@ -55,14 +55,13 @@ app.use('/auth', authRouter);
 app.use('/payment', paymentRouter);
 app.use('/cart', cartRouter);
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static( 'client/build' ));
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'client/build' ));
 
-//     app.get('*', (req, res) => {
-//         // res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
-//         res.sendFile('./public/build/index.html'); // relative path
-//     });
-// }
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
+    });
+}
 //PAYTM:
 // export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
 // //callback url is called after success or failure of payment

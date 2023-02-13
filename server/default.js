@@ -1,5 +1,5 @@
-import Product from './model/productSchema.js';
-import { products } from './constants/product.js';
+const Product = require('./model/productSchema.js');
+const products = require('./constants/product.js');
 
 const DefaultData = async () => {
     try {
@@ -13,4 +13,4 @@ const DefaultData = async () => {
     }
 }
 
-export default DefaultData;
+module.exports = DefaultData;

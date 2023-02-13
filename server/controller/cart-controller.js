@@ -1,6 +1,6 @@
-import cartModel from '../model/cartSchema.js';
+const cartModel = require('../model/cartSchema.js');
 
-export const addItem = async (req, res) => {
+const addItem = async (req, res) => {
     console.log("server addItem called");
     const {userEmail, data: product} = req.body;
     try{
@@ -28,7 +28,7 @@ export const addItem = async (req, res) => {
         res.status(500).send("Something went wrong");
     }
 }
-export const removeItem = async (req, res) => {
+const removeItem = async (req, res) => {
     const {userEmail, data: productId} = req.body;
     console.log("server removeItem called");
     console.log(`${userEmail} ${productId}`);
@@ -51,7 +51,7 @@ export const removeItem = async (req, res) => {
         res.status(500).send("Something went wrong");
     }
 }
-export const updateQuantity = async (req, res) => {
+const updateQuantity = async (req, res) => {
     const { userEmail, data: {id: productId, quantity} } = req.body;
     console.log("server updateQuantity called");
     console.log(`${userEmail} ${productId} ${quantity}`);
@@ -75,7 +75,7 @@ export const updateQuantity = async (req, res) => {
     }
 }
 
-export const getCart = async (req, res) => {
+const getCart = async (req, res) => {
     console.log("server getCart called");
     const {userEmail} = req.body;
     try{
@@ -87,3 +87,5 @@ export const getCart = async (req, res) => {
         res.status(500).send("Something went wrong");
     }
 }
+
+module.exports = {addItem, removeItem, updateQuantity, getCart};

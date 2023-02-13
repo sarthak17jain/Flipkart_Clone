@@ -1,10 +1,10 @@
-import User from '../model/userSchema.js';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+const User = require('../model/userSchema.js');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 // import {JWT_KEY} from '../secrets.js';
-import dotenv from 'dotenv';
-dotenv.config();
-import cartModel from '../model/cartSchema.js';
+const dotenv = require('dotenv').config();
+// dotenv.config();
+const cartModel = require('../model/cartSchema.js');
 
 //sameSite:'Lax' which is also the default option prevents CSRF attack
 const cookieOptions = {
@@ -14,7 +14,7 @@ const cookieOptions = {
     secure: process.env.NODE_ENV === 'production' ? true : false
 }
 
-export const userLogIn = async (req, res) => {
+const userLogIn = async (req, res) => {
     console.log("server side userLogIn called");
     let data = req.body;
     try {
@@ -66,7 +66,7 @@ export const userLogIn = async (req, res) => {
     }
 }
 
-export const userSignUp = async (req, res) => {
+const userSignUp = async (req, res) => {
     console.log("server side userSignup called");
     try {
         const dataObj = req.body;
@@ -113,7 +113,7 @@ export const userSignUp = async (req, res) => {
 }
 
 //check if user is logged in 
-export const verifyToken = async (req, res) => {
+const verifyToken = async (req, res) => {
     console.log("server side verifyToken called");
     const loginCookie = req.cookies.login;
     console.log(loginCookie);
@@ -139,9 +139,11 @@ export const verifyToken = async (req, res) => {
     }
 }
 
-export const logout = (req, res)=>{
+const logout = (req, res)=>{
     res.cookie('login',' ',{...cookieOptions, maxAge: 1});
     res.status(200).json({
         message:"user logged out succesfully"
     });
 }
+
+module.exports = {userLogIn, userSignUp, verifyToken, logout}

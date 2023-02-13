@@ -1,5 +1,5 @@
-import express from  'express';
-import { userSignUp, userLogIn, verifyToken, logout } from '../controller/user-controller.js';
+const express = require('express');
+const { userSignUp, userLogIn, verifyToken, logout } = require('../controller/user-controller.js');
 
 const authRouter = express.Router();
 
@@ -8,4 +8,4 @@ authRouter.post('/login', userLogIn);
 authRouter.get('/logout', logout);
 authRouter.get('/checkuser', verifyToken);
 
-export default authRouter;
+module.exports = authRouter;
