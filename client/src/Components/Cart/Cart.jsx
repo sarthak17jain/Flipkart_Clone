@@ -9,6 +9,7 @@ import CartItem from './CartItem';
 import { LoginContext } from '../../context/ContextProvider';
 import LoginDialog from '../Login/LoginDialog';
 import { makePayment } from '../../service/api';
+import { toast } from 'react-toastify';
 
 const Component = styled(Grid)(({ theme }) => ({
     padding: '30px 135px',
