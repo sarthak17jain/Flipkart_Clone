@@ -57,7 +57,8 @@ app.use('/cart', cartRouter);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static( 'public/build' ));
-
+    console.log(__dirname);
+    console.log(path.join(__dirname, 'public', 'build', 'index.html'));
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
     });
