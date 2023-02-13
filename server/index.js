@@ -15,9 +15,10 @@ import paymentRouter from './routes/paymentRouter.js';
 
 dotenv.config();
 const app = express();
-const PORT = process.env.SERVER_PORT || 8000;
+console.log()
+const PORT = process.env.PORT || 8000;
 const db_link = process.env.DB_LINK;
-console.log(process.env.SERVER_PORT);
+console.log(process.env.PORT);
 console.log(process.env.CLIENT_URL);
 
 //rawBody in form of buffer data is required for Stripe 
