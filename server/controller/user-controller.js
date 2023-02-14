@@ -10,7 +10,7 @@ import cartModel from '../model/cartSchema.js';
 const cookieOptions = {
     httpOnly:true, 
     maxAge: 5*60*60*1000, //5 hours expiration
-    sameSite:'None', 
+    sameSite:'Lax', 
     secure: process.env.NODE_ENV === 'production' ? true : false
 }
 
