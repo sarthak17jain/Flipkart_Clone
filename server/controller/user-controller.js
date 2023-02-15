@@ -6,7 +6,9 @@ const dotenv = require('dotenv').config();
 // dotenv.config();
 const cartModel = require('../model/cartSchema.js');
 
-//sameSite:'Lax' which is also the default option prevents CSRF attack
+//sameSite:'None' since frontend and backend is hosted separately which makes it cross-site.
+//And therefore third-party cookie. Therefore sameSite:'None'; secure:true is the only option
+//CSRF attack is not possible because requests from CLIENT_URL only are allowed, cross-site requests are blocked 
 const cookieOptions = {
     httpOnly:true, 
     maxAge: 5*60*60*1000, //5 hours expiration
