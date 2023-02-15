@@ -4,6 +4,15 @@ micros:
   - name: server
     src: server
     engine: nodejs16
+    presets:
+          env:
+            - DB_LINK: mongodb+srv://admin:pW1kopn9c6OSBWse@cluster0.qa0gkut.mongodb.net/?retryWrites=true&w=majority
+              CLIENT_URL: https://flipkart_clone-3-p3955197.deta.app
+              JWT_KEY: a174b30ef252f34b4bb8ac46865fc8cb8838b4000fd59e5a99fdf8e503e792e3760d478c7f9d4c15ee2a016fb915532ce72c8fce2aeb05311e46ad6727f40074
+              STRIPE_SECRET_KEY: sk_test_51MXeDkSEaFk49QvSm1eypuylafa43ZNGCAdDMfikWXxyLMqKbpBqGW3aF6TwxKlcDEnQMTpncw8WMPxpNIxvDoH7004jvpWBSV
+              PAYMENT_SUCCESS_PATH: /paymentsuccess
+              PAYMENT_FAILURE_PATH: /paymentfailure
+              STRIPE_ENDPOINT_SECRET: whsec_7614ad11b3edfc1151fcec5b68ab1f9bfb08b9585ae6d3245a66d2ccbed971c8
     commands:
       - npm install
     run: "node index.js"
