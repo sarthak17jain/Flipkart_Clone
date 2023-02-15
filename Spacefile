@@ -1,0 +1,9 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: server
+    src: server
+    engine: nodejs16
+    commands:
+      - npm install
+    run: "node index.js"
