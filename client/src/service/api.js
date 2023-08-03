@@ -44,7 +44,7 @@ export const checkUser = async ()=>{
 
 export const getProductById = async (id) => {
     try {
-        return await axios.get(`${url}/product/${id}`);
+        return await axios.get(`${url}/productData/${id}`);
     } catch (error) {
         console.log('Error while getting product by id response', error);
     }
