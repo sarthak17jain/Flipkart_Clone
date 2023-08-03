@@ -5,7 +5,7 @@ export const addToCart = (userEmail, id) => async (dispatch, getState) => {
     try { 
         //inorder to get realtime price data otherwise if product is passed as a prop then 
         //the product data might get outdated
-        const { data: productData } = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/product/${id}`);
+        const { data: productData } = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/productData/${id}`);
         // console.log(productData);
         dispatch({ type: actionTypes.ADD_TO_CART, payload: { ...productData } });
         userEmail && await axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/cart/add`, { userEmail: userEmail, data: productData});
