@@ -50,7 +50,7 @@ mongoose.connect(db_link)
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 DefaultData();
 
-app.use('/product', productRouter);
+app.use('/productData', productRouter);
 app.use('/auth', authRouter);
 app.use('/payment', paymentRouter);
 app.use('/cart', cartRouter);
