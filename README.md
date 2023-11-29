@@ -14,16 +14,16 @@
 ## Live:
 **Check out live webapp at: https://flipkart-clone-kydx.onrender.com/**
 
-# Preview:
+## Preview:
 #### SignUp SignIn feature using JWT cookie with HttpOnly attribute to prevent XSS<br>
 ![Preview_gif](https://github.com/sarthak17jain/Flipkart_Clone/blob/main/Authentication_Authorization.gif)
-<br>
+<br><br>
 #### Stripe Payments with Webhook to clear cart in case of successful payment<br>
 ![Preview_gif](https://github.com/sarthak17jain/Flipkart_Clone/blob/main/Payment_Feature.gif)
-<br>
+<br><br>
 #### Add, Update Quantity, Remove from Cart updating the redux store and user cart in MongoDB
 ![Preview_gif](https://github.com/sarthak17jain/Flipkart_Clone/blob/main/Cart_Redux.gif)
-<br>
+<br><br>
 #### Search Bar 
 ![Preview_gif](https://github.com/sarthak17jain/Flipkart_Clone/blob/main/Search_Feature.gif)
 
