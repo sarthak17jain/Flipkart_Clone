@@ -55,7 +55,7 @@ app.use('/auth', authRouter);
 app.use('/payment', paymentRouter);
 app.use('/cart', cartRouter);
 
-console.log(NODE_ENV);
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static( 'public/build' ));
     console.log(__dirname);
