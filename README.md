@@ -12,7 +12,7 @@
 *Backend*: Node.js, Express.js (Server), MongoDB (Database), Mongoose, Stripe (Payment Gateway)
 
 ## Live:
-**Check out live webapp at: https://flipkart-clone-kydx.onrender.com/**
+**Check out live webapp at: https://flipkartcloneapp.cyclic.app/**
 
 ## Preview:
 #### SignUp SignIn feature using JWT cookie with HttpOnly attribute to prevent XSS<br>
