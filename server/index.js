@@ -9,10 +9,11 @@ const path = require('path');
 // import { v4 as uuid } from 'uuid';
 
 const DefaultData = require('./default.js');
-const productRouter = require('./routes/productRouter.js');
-const cartRouter = require('./routes/cartRouter.js');
-const authRouter = require('./routes/authRouter.js');
-const paymentRouter = require('./routes/paymentRouter.js');
+// const productRouter = require('./routes/productRouter.js');
+// const cartRouter = require('./routes/cartRouter.js');
+// const authRouter = require('./routes/authRouter.js');
+// const paymentRouter = require('./routes/paymentRouter.js');
+const routes = require('./routes/Router.js');
 
 const app = express();
 console.log()
@@ -54,10 +55,11 @@ mongoose.connect(db_link)
 });
 
 
-app.use('/productData', productRouter);
-app.use('/auth', authRouter);
-app.use('/payment', paymentRouter);
-app.use('/cart', cartRouter);
+// app.use('/productData', productRouter);
+// app.use('/auth', authRouter);
+// app.use('/payment', paymentRouter);
+// app.use('/cart', cartRouter);
+app.use('./api/', routes);
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
