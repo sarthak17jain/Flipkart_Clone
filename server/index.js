@@ -68,6 +68,10 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
     });
 }
+
+//For serverless vercel
+module.exports = app;
+
 //PAYTM:
 // export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
 // //callback url is called after success or failure of payment
