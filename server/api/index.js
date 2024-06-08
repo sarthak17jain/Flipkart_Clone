@@ -9,11 +9,11 @@ const path = require('path');
 // import { v4 as uuid } from 'uuid';
 
 const DefaultData = require('../default.js');
-// const productRouter = require('./routes/productRouter.js');
-// const cartRouter = require('./routes/cartRouter.js');
-// const authRouter = require('./routes/authRouter.js');
-// const paymentRouter = require('./routes/paymentRouter.js');
-const routes = require('../routes/Router.js');
+const productRouter = require('../routes/productRouter.js');
+const cartRouter = require('../routes/cartRouter.js');
+const authRouter = require('../routes/authRouter.js');
+const paymentRouter = require('../routes/paymentRouter.js');
+// const routes = require('../routes/Router.js');
 
 const app = express();
 console.log()
@@ -37,10 +37,10 @@ app.use(cors({credentials: true, origin: process.env.CLIENT_URL}));
 //we use middleware function for cookieParser so that we can access our cookies from anywhere
 app.use(cookieParser());
 
-async function startServer() {
-    await DefaultData();
+// async function startServer() {
+    // await DefaultData();
     app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
-}
+// }
 
 mongoose.set('strictQuery', true);
 
@@ -55,11 +55,11 @@ mongoose.connect(db_link)
 });
 
 
-// app.use('/productData', productRouter);
-// app.use('/auth', authRouter);
-// app.use('/payment', paymentRouter);
-// app.use('/cart', cartRouter);
-app.use('/api', routes);
+app.use('/productData', productRouter);
+app.use('/auth', authRouter);
+app.use('/payment', paymentRouter);
+app.use('/cart', cartRouter);
+// app.use('/api', routes);
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
