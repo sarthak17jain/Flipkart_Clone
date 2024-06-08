@@ -8,11 +8,11 @@ const path = require('path');
 // import path from 'path';
 // import { v4 as uuid } from 'uuid';
 
-const DefaultData = require('../default.js');
-const productRouter = require('../routes/productRouter.js');
-const cartRouter = require('../routes/cartRouter.js');
-const authRouter = require('../routes/authRouter.js');
-const paymentRouter = require('../routes/paymentRouter.js');
+const DefaultData = require('./default.js');
+const productRouter = require('./routes/productRouter.js');
+const cartRouter = require('./routes/cartRouter.js');
+const authRouter = require('./routes/authRouter.js');
+const paymentRouter = require('./routes/paymentRouter.js');
 // const routes = require('../routes/Router.js');
 
 const app = express();
@@ -63,12 +63,13 @@ app.use('/cart', cartRouter);
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static( '../public/build' ));
+    app.use(express.static( 'public/build' ));
     console.log(__dirname);
-    console.log(path.resolve(__dirname, '../public/build', 'index.html'));
+    console.log(path.join(__dirname, 'public', 'build', 'index.html'));
+    // console.log(path.resolve(__dirname, '../public/build', 'index.html'));
     app.get('*', (req, res) => {
-        // res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
-        res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
+        res.sendFile(path.join(__dirname, 'public', 'build', 'index.html')); // relative path
+        // res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
     });
 }
 
