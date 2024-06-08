@@ -59,7 +59,7 @@ mongoose.connect(db_link)
 // app.use('/auth', authRouter);
 // app.use('/payment', paymentRouter);
 // app.use('/cart', cartRouter);
-app.use('./api', routes);
+app.use('/api', routes);
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
