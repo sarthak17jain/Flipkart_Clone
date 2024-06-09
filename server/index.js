@@ -36,10 +36,10 @@ app.use(cors({credentials: true, origin: process.env.CLIENT_URL}));
 //we use middleware function for cookieParser so that we can access our cookies from anywhere
 app.use(cookieParser());
 
-async function startServer() {
-    await DefaultData();
-    app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
-}
+// async function startServer() {
+//     await DefaultData();
+//     app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
+// }
 
 mongoose.set('strictQuery', true);
 
@@ -47,7 +47,8 @@ mongoose.connect(db_link)
 .then(function(db){
     // console.log(db);
     console.log('db connected');
-    startServer();
+    // startServer();
+    app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 })
 .catch(function(err){
     console.log(err);
